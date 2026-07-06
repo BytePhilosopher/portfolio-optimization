@@ -1,0 +1,38 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+.env
+
+# Test / tooling caches
+.pytest_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data (keep processed outputs out of git; regenerate via scripts/fetch_data.py)
+data/raw/*
+!data/raw/.gitkeep
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Model artifacts
+*.h5
+*.keras
+*.pkl
+models/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+data/
