@@ -54,7 +54,8 @@ portfolio-optimization/
 
 - **Task 1 — Preprocess & Explore** ✅ — data extraction, cleaning, EDA, stationarity (ADF),
   and foundational risk metrics (VaR, Sharpe). See [`notebooks/01_task1_eda.ipynb`](notebooks/01_task1_eda.ipynb).
-- **Task 2 — Forecasting** — ARIMA/SARIMA (statsmodels/pmdarima) vs. LSTM, compared on MAE/RMSE/MAPE.
+- **Task 2 — Forecasting** ✅ — ARIMA/SARIMA (`auto_arima`) vs. a stacked LSTM for TSLA, compared on
+  MAE/RMSE/MAPE with a chronological split. See [`notebooks/02_task2_forecasting.ipynb`](notebooks/02_task2_forecasting.ipynb).
 - **Task 3 — Forecast-driven analysis** — translate forecasts into forward-looking market views.
 - **Task 4 — Optimization & Backtesting** — Efficient Frontier via PyPortfolioOpt, then backtest vs. benchmark.
 
@@ -70,3 +71,18 @@ portfolio-optimization/
 
 > **Note on the risk-free rate:** the Sharpe Ratio assumes a 2% annual risk-free rate (`RF_ANNUAL` in
 > the notebook); adjust as needed.
+
+## Task 2 — headline findings
+
+Forecasting **TSLA Adjusted Close**, train 2015–2024 / test 2025–2026-06, one-step-ahead:
+
+| Model | MAE | RMSE | MAPE |
+|-------|-----|------|------|
+| **ARIMA(0,1,0) — 1-step** | **9.04** | **11.96** | **2.53%** |
+| LSTM — 1-step (window=60) | 22.75 | 27.71 | 5.99% |
+| ARIMA(0,1,0) — static multi-step | 54.06 | 70.11 | 17.08% |
+
+- `auto_arima` selects **ARIMA(0,1,0)** — a random walk; its one-step forecast is the optimal
+  *persistence* prediction and **beats the LSTM outright** (< half the error) with zero parameters.
+- The static multi-step forecast flattens (EMH): long-horizon price direction is not reliably forecastable.
+- **Takeaway:** treat forecasts as low-confidence views; rely on diversification/optimization downstream.

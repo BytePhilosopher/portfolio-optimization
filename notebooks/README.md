@@ -3,6 +3,7 @@
 | Notebook | Task | Description |
 |----------|------|-------------|
 | `01_task1_eda.ipynb` | Task 1 | Data extraction, cleaning, EDA, stationarity testing, and foundational risk metrics for TSLA, BND, and SPY. |
+| `02_task2_forecasting.ipynb` | Task 2 | Forecasting TSLA: chronological split, ARIMA/SARIMA (`auto_arima`) and a stacked LSTM, compared on MAE/RMSE/MAPE. |
 
 ## Running
 
