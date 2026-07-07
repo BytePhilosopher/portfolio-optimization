@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(python3 \"/private/tmp/claude-501/-Users-yostinaabera-Documents-portfolio-optimization/7783e924-a3e2-4a58-b300-002be9fb3d57/scratchpad/build_task3.py\")",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(python3 \"/private/tmp/claude-501/-Users-yostinaabera-Documents-portfolio-optimization/7783e924-a3e2-4a58-b300-002be9fb3d57/scratchpad/build_task4.py\")"
     ]
   }
 }
