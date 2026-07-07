@@ -56,7 +56,9 @@ portfolio-optimization/
   and foundational risk metrics (VaR, Sharpe). See [`notebooks/01_task1_eda.ipynb`](notebooks/01_task1_eda.ipynb).
 - **Task 2 — Forecasting** ✅ — ARIMA/SARIMA (`auto_arima`) vs. a stacked LSTM for TSLA, compared on
   MAE/RMSE/MAPE with a chronological split. See [`notebooks/02_task2_forecasting.ipynb`](notebooks/02_task2_forecasting.ipynb).
-- **Task 3 — Forecast-driven analysis** — translate forecasts into forward-looking market views.
+- **Task 3 — Forecast future trends** ✅ — 12-month TSLA forecast with confidence intervals, trend
+  analysis, opportunities/risks, and a reliability-by-horizon assessment.
+  See [`notebooks/03_task3_future_forecast.ipynb`](notebooks/03_task3_future_forecast.ipynb).
 - **Task 4 — Optimization & Backtesting** — Efficient Frontier via PyPortfolioOpt, then backtest vs. benchmark.
 
 ## Task 1 — headline findings
