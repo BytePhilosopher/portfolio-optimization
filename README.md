@@ -62,7 +62,9 @@ portfolio-optimization/
 - **Task 4 — Optimization** ✅ — forecast-driven Efficient Frontier via PyPortfolioOpt + Monte Carlo,
   max-Sharpe & min-vol portfolios, covariance heatmap, and a recommended allocation.
   See [`notebooks/04_task4_optimization.ipynb`](notebooks/04_task4_optimization.ipynb).
-  Backtesting (vs. benchmark) is the remaining sub-task.
+- **Task 5 — Backtesting** ✅ — simulate the recommended strategy vs. a 60/40 SPY/BND benchmark over the
+  out-of-sample holdout (cumulative returns, drawdown, Sharpe, max drawdown) with a viability conclusion.
+  See [`notebooks/05_task5_backtesting.ipynb`](notebooks/05_task5_backtesting.ipynb).
 
 > **Environment note:** Task 4 requires `numpy >= 2.0` (via PyPortfolioOpt/cvxpy), whereas Tasks 2–3 use
 > TensorFlow which requires `numpy < 2.0`. The forecasting notebooks are committed with executed outputs;
@@ -109,3 +111,17 @@ Expected returns: **TSLA from the forecast** (drift view ≈ 8%, vs. 46% histori
   justify its volatility, and BND's return sits at the risk-free rate. **Only naive ~46% historical
   extrapolation would over-weight TSLA (~28%)** — exactly what the forecast is designed to prevent.
 - BND's ballast appears in the **min-volatility** portfolio (≈95% BND) — the conservative alternative.
+
+## Task 5 — headline findings
+
+Backtest of the recommended strategy vs. a 60/40 benchmark over the out-of-sample holdout (2025-01 → 2026-06):
+
+| Portfolio | Total | Annualized | Sharpe | Max drawdown |
+|-----------|------:|-----------:|-------:|-------------:|
+| **Strategy — Max-Sharpe (100% SPY)** | +29.9% | 19.4% | 0.97 | −18.8% |
+| Benchmark — 60/40 SPY/BND | +20.8% | 13.7% | **1.06** | **−11.3%** |
+
+- The strategy **won on raw return** (+29.9% vs +20.8%) but **lost on risk-adjusted return** (Sharpe
+  0.97 vs 1.06) and had a **deeper drawdown** — the benchmark's bond sleeve cushioned the 2025 selloff.
+- **Takeaway:** diversification is a hard-to-beat baseline; the model-driven edge is in *process/risk
+  discipline*, not directional alpha (consistent with the EMH thread). One favorable window ≠ proof.
