@@ -59,7 +59,14 @@ portfolio-optimization/
 - **Task 3 — Forecast future trends** ✅ — 12-month TSLA forecast with confidence intervals, trend
   analysis, opportunities/risks, and a reliability-by-horizon assessment.
   See [`notebooks/03_task3_future_forecast.ipynb`](notebooks/03_task3_future_forecast.ipynb).
-- **Task 4 — Optimization & Backtesting** — Efficient Frontier via PyPortfolioOpt, then backtest vs. benchmark.
+- **Task 4 — Optimization** ✅ — forecast-driven Efficient Frontier via PyPortfolioOpt + Monte Carlo,
+  max-Sharpe & min-vol portfolios, covariance heatmap, and a recommended allocation.
+  See [`notebooks/04_task4_optimization.ipynb`](notebooks/04_task4_optimization.ipynb).
+  Backtesting (vs. benchmark) is the remaining sub-task.
+
+> **Environment note:** Task 4 requires `numpy >= 2.0` (via PyPortfolioOpt/cvxpy), whereas Tasks 2–3 use
+> TensorFlow which requires `numpy < 2.0`. The forecasting notebooks are committed with executed outputs;
+> to *re-run* them, reinstall `numpy<2.0` (`pip install "numpy<2.0"`), and reinstall `numpy>=2.0` for Task 4.
 
 ## Task 1 — headline findings
 
@@ -88,3 +95,17 @@ Forecasting **TSLA Adjusted Close**, train 2015–2024 / test 2025–2026-06, on
   *persistence* prediction and **beats the LSTM outright** (< half the error) with zero parameters.
 - The static multi-step forecast flattens (EMH): long-horizon price direction is not reliably forecastable.
 - **Takeaway:** treat forecasts as low-confidence views; rely on diversification/optimization downstream.
+
+## Task 4 — headline findings
+
+Expected returns: **TSLA from the forecast** (drift view ≈ 8%, vs. 46% historical), SPY/BND historical.
+
+| Portfolio | TSLA | SPY | BND | Return | Vol | Sharpe |
+|-----------|-----:|----:|----:|-------:|----:|-------:|
+| **Max Sharpe (recommended)** | 0% | 100% | 0% | 14.5% | 17.7% | **0.71** |
+| Min Volatility | 0% | 5% | 95% | 2.7% | 5.2% | 0.12 |
+
+- The forecast-driven max-Sharpe portfolio is **≈100% SPY**: TSLA's realistic forecast return doesn't
+  justify its volatility, and BND's return sits at the risk-free rate. **Only naive ~46% historical
+  extrapolation would over-weight TSLA (~28%)** — exactly what the forecast is designed to prevent.
+- BND's ballast appears in the **min-volatility** portfolio (≈95% BND) — the conservative alternative.
