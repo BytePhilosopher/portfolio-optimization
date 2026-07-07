@@ -6,6 +6,7 @@
 | `02_task2_forecasting.ipynb` | Task 2 | Forecasting TSLA: chronological split, ARIMA/SARIMA (`auto_arima`) and a stacked LSTM, compared on MAE/RMSE/MAPE. |
 | `03_task3_future_forecast.ipynb` | Task 3 | 12-month TSLA forecast with confidence intervals (ARIMA best model + iterative LSTM), trend analysis, opportunities/risks, and reliability-by-horizon. |
 | `04_task4_optimization.ipynb` | Task 4 | MPT portfolio optimization: forecast-driven expected returns, covariance heatmap, Efficient Frontier (PyPortfolioOpt + Monte Carlo), max-Sharpe & min-vol portfolios, and a recommendation. |
+| `05_task5_backtesting.ipynb` | Task 5 | Backtest the recommended strategy vs. a 60/40 SPY/BND benchmark over the out-of-sample holdout: cumulative returns, drawdowns, metrics, and a viability conclusion. |
 
 ## Running
 
